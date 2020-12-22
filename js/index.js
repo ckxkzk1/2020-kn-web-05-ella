@@ -103,8 +103,11 @@ $.get('../json/navi-men.json', onNaviMen); // Men 상품 가져오기
 $.get('../json/navi-women.json', onNaviWomen); // Women 상품 가져오기
 $.get('../json/navi-kids.json', onNaviKids); // Kids 상품 가져오기
 
-$(".navi-wrapper .navi").mouseenter(onNaviEnter);
-$(".navi-wrapper .navi").mouseleave(onNaviLeave);
+$(".navi-wrapper .navi").mouseenter(onNaviEnter); //메인네비
+$(".navi-wrapper .navi").mouseleave(onNaviLeave); //메인네비
+
+$(".modal-trigger").click(onModalShow);
+$(".modal-container").click(onModalHide);
 
 $(window).scroll(onScroll).resize(onResize).trigger("resize");
 
@@ -113,6 +116,17 @@ mainBanner();
 
 
 /********* 이벤트콜백 **********/
+function onModalShow(e){
+	e.preventDefault(); // 클릭 이벤트를 막는 역활
+	$(".modal-container").css({"display": "block"});
+	$(".modal-container").css("opacity");
+	$(".modal-container").addClass('active');
+	$("body").addClass("hide");   
+}
+function onModalHide(e){
+
+}
+
 function onResize(e) {
 	topHeight = $('.top-wrapper').outerHeight();
 	logoHeight = $('.logo-wrapper').outerHeight();
